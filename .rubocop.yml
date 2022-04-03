@@ -1282,7 +1282,7 @@ Style/CharacterLiteral:
 
 Style/ClassAndModuleChildren:
   Description: Checks style of children classes and modules.
-  Enabled: true
+  Enabled: false
   EnforcedStyle: compact
 
 # Supports --auto-correct

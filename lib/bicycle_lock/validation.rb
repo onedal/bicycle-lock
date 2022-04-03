@@ -1,9 +1,9 @@
 module BicycleLock
   module Validation
     def validate_data!(from:, to:, exclude:)
-      array?(from: from, to: to,
-                exclude: exclude) && solution_exist?(from: from, to: to,
-exclude: exclude) && disc_count_valid?(to: to, from: from)
+      array?(from: from, to: to, exclude: exclude) &&
+        solution_exist?(from: from, to: to, exclude: exclude) &&
+        disc_count_valid?(to: to, from: from)
     end
 
     private
@@ -12,8 +12,7 @@ exclude: exclude) && disc_count_valid?(to: to, from: from)
       if from.is_a?(Array) && to.is_a?(Array) && exclude.is_a?(Array)
         true
       else
-        raise(TypeError,
-              'from or to or exclude must be an array')
+        raise(TypeError, 'from or to or exclude must be an array')
       end
     end
 
@@ -24,13 +23,12 @@ exclude: exclude) && disc_count_valid?(to: to, from: from)
     def disc_count_valid?(to:, from:)
       raise(ArgumentError, 'DISC_COUNT must be defined') unless Object.const_defined?('DISC_COUNT')
 
-      DISC_COUNT&.is_a?(Integer) ? true : raise(ArgumentError, 'DISC_COUNT must be a integer')
+      raise(ArgumentError, 'DISC_COUNT must be a integer') unless DISC_COUNT&.is_a?(Integer)
 
       if DISC_COUNT == to.size && DISC_COUNT == from.size
         true
       else
-        raise(ArgumentError,
-              'DISC_COUNT must be equal from & to size')
+        raise(ArgumentError, 'DISC_COUNT must be equal from & to size')
       end
     end
   end
