@@ -27,7 +27,10 @@ exclude = [[0, 0, 1], [1, 0, 0]]
 [1, 1, 0]
 [1, 1, 1]
 
-## Способ запуска
+## Как запустить?
+
+Должна быть установлена руби ruby-3.1.0
+Используется синтаксис для single line method
 
 ```bash
 ruby example/big_lock.rb
@@ -39,7 +42,7 @@ ruby example/big_lock.rb
 ruby example/small_lock.rb
 ```
 
-## Как протестировать
+## Как протестировать?
 
 ```bash
 bundle install
