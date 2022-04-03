@@ -4,4 +4,3 @@ module BicycleLock::Support
     arr&.join&.to_i
   end
 end
-

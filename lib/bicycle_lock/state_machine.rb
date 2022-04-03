@@ -4,6 +4,7 @@ module BicycleLock
 
     def initialize(current:)
       raise ArgumentError, 'current must be an integer' unless current.is_a?(Integer)
+
       self.current  = current
     end
 
