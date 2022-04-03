@@ -22,9 +22,7 @@ module BicycleLock
 
     def disc_count_valid?(to:, from:)
       raise(ArgumentError, 'DISC_COUNT must be defined') unless Object.const_defined?('DISC_COUNT')
-
       raise(ArgumentError, 'DISC_COUNT must be a integer') unless DISC_COUNT.is_a?(Integer)
-
       if DISC_COUNT == to.size && DISC_COUNT == from.size
         true
       else
