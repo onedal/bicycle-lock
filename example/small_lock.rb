@@ -6,8 +6,17 @@ require './lib/bicycle_lock'
 
 DISC_COUNT = 3
 from = [0, 0, 0]
-to =   [1, 0, 1]
-exclude = [[1, 0, 0], [1, 0, 3]]
+to = [4, 5, 8]
+# решений нет
+# exclude = [[0, 0, 1], [1, 0, 0], [3, 0,8], [4, 5, 0], [4, 5, 1], [4, 5, 1], [3,3,3], [3,3,2],[3,2,2], [2,3,2], [2,2,3] ]
+exclude = [[0, 0, 1], [1, 0, 0], [3, 0, 8], [4, 5, 0], [4, 5, 1], [4, 5, 1], [3, 3, 3], [3, 3, 2], [3, 2, 2], [2, 3, 2]]
 
-history_arr = BicycleLock::Generator.(from: from, to: to, exclude: exclude)
-pp history_arr
+operation = BicycleLock::Generator.(from: from, to: to, exclude: exclude)
+
+if operation[:errors]
+  p 'Попытка решения'
+  pp operation[:iterations]
+  p 'Решений нет'
+else
+  pp operation[:iterations]
+end

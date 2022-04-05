@@ -7,36 +7,29 @@ RSpec.describe BicycleLock::StateMachine do
 
   describe '#initialize' do
     it 'success result' do
-      expect(BicycleLock::StateMachine.new(current: 123)).to be_a(BicycleLock::StateMachine)
+      expect(BicycleLock::StateMachine.new(current: from)).to be_a(BicycleLock::StateMachine)
     end
 
     it 'raise ArgumentError' do
       expect do
-        BicycleLock::StateMachine.new(current: from)
-      end.to raise_error(ArgumentError, 'current must be an integer')
+        BicycleLock::StateMachine.new(current: 123)
+      end.to raise_error(ArgumentError, 'current must be an Array')
     end
   end
 
-  describe '#increment!' do
+  describe '#increment_index!' do
     it 'success result' do
-      machine = BicycleLock::StateMachine.new(current: 0)
-      machine.increment!
-      expect(machine.current).to eq(1)
+      machine = BicycleLock::StateMachine.new(current: from)
+      machine.increment_index!(2)
+      expect(machine.current).to eq([0, 0, 1])
     end
   end
 
-  describe '#decrement!' do
+  describe '#decrement_index!' do
     it 'success result' do
-      machine = BicycleLock::StateMachine.new(current: 1)
-      machine.decrement!
-      expect(machine.current).to eq(0)
-    end
-  end
-
-  describe '#output' do
-    it 'success result' do
-      machine = BicycleLock::StateMachine.new(current: 123)
-      expect(machine.output).to eq([1, 2, 3])
+      machine = BicycleLock::StateMachine.new(current: [0, 1, 0])
+      machine.decrement_index!(1)
+      expect(machine.current).to eq([0, 0, 0])
     end
   end
 end
